@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "oresmen"
+version = "0.1.0"
+description = "A module for generating Oresme numbers (harmonic series partial sums)"
+authors = ["Mehmet Keçeci <mkececi@yaani.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^2.3.2"
+
+[tool.poetry.group.build.dependencies]
+setuptools = "^80.9.0"
+cython = "^3.1.2"
+
+[build-system]
+requires = ["poetry-core", "cython", "setuptools>=61.0"]
+build-backend = "poetry.core.masonry.api"

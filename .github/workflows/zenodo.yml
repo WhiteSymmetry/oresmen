@@ -1,0 +1,25 @@
+name: Publish to Zenodo on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-to-zenodo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create ZIP Archive
+        run: |
+          zip -r grikod-source.zip ./*
+
+      - name: Upload to Zenodo
+        uses: yfukai/zenodo-publish-action@v1.3.0
+        with:
+          access_token: ${{ secrets.ZENODO_TOKEN }}
+          metadata_file: .zenodo.json
+          filename: grikod-source.zip

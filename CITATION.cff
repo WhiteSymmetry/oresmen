@@ -1,0 +1,37 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: oresmen
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file. / Eğer bu yazılımı
+  kullanıyorsanız, lütfen bu dosyadaki meta verileri
+  kullanarak atıfta bulunun.
+type: software
+authors:
+  - given-names: Mehmet
+    family-names: Keçeci
+    email: bilginomi@yaani.com
+    orcid: 'https://orcid.org/0000-0001-9937-9839'
+identifiers:
+  - type: doi
+    value: 
+  - type: doi
+    value: 
+  - type: doi
+    value: 
+  - type: doi
+    value: 
+repository-code: 'https://github.com/WhiteSymmetry/oresmen'
+url: 'https://github.com/WhiteSymmetry/oresmen'
+repository: 'https://anaconda.org/bilgi/oresmen'
+repository-artifact: 'https://pypi.org/project/oresmen/'
+abstract: >-
+  A module for generating Oresme numbers (harmonic series partial sums)
+keywords:
+  - oresmen
+license: MIT
+commit: 'Revision: 1'
+version: 0.1.0
+date-released: '2025-07-12'

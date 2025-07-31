@@ -1,0 +1,45 @@
+{% set name = "oresmen" %}
+{% set version = "0.1.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  # Proje kök dizininden derleme yapıldığını varsayar.
+  path: ..
+  url: 
+  sha256: 
+
+build:
+  # ÖNEMLİ: noarch: python satırını SİLİYORUZ. Çünkü Cython kodu
+  # derlendiğinde, paket platforma özgü (Windows, Linux, macOS) hale gelir.
+  script: "{{ PYTHON }} -m pip install . -vv --no-deps --ignore-installed"
+  noarch: python
+  number: 0
+
+requirements:
+  # build bölümü, derleme araçları ve derleyiciler içindir.
+  build:
+    # Bu satır, conda-build'in doğru C derleyicisini kurmasını SAĞLAR.
+    # Bu, sorunun ana çözümüdür.
+    - {{ compiler('c') }}
+
+  # host bölümü, derleme betiğinin çalışacağı ortam içindir.
+  host:
+    - python
+    - pip
+    - poetry-core  # Zaten vardı, doğru.
+    - cython       # Derleme için Cython'un kendisi de gereklidir.
+    - setuptools   # Cython ve Poetry'nin düzgün çalışması için genellikle gereklidir.
+
+  # run bölümü, son kullanıcının paketi çalıştırması için gerekenlerdir.
+  run:
+    - python
+    # - numpy # Örnek bağımlılık
+
+about:
+  # ... about bölümünüz aynı kalabilir ...
+  home: https://github.com/WhiteSymmetry/oresmen
+  license: MIT
+  summary: 'A module for generating Oresme numbers (harmonic series partial sums)'

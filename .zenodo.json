@@ -1,0 +1,13 @@
+{
+  "title": "oresmen",
+  "upload_type": "software",
+  "description": "A module for generating Oresme numbers (harmonic series partial sums)",
+  "creators": [
+    {
+      "name": "Keçeci, Mehmet",
+      "orcid": "0000-0001-9937-9839"
+    }
+  ],
+  "license": "mit-license",
+  "access_right": "open"
+}
