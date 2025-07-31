@@ -8,8 +8,8 @@ package:
 source:
   # Proje kök dizininden derleme yapıldığını varsayar.
   path: ..
-  url: https://files.pythonhosted.org/packages/8f/62/fc0cd4ec6eaeb94bbd58a4857a4947c71dd70c5550744dcc3bf5eacdf95f/oresmen-0.1.0.tar.gz
-  sha256: f3febf4c3a7c4898de22a594595e101fe42e7dd95cf4316bc8aff230e8b3d7b9
+  url: 
+  sha256: 
 
 build:
   # ÖNEMLİ: noarch: python satırını SİLİYORUZ. Çünkü Cython kodu
