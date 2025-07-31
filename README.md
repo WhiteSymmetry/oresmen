@@ -1,6 +1,6 @@
 # Oresme Numba
 
-[![DOI](https://zenodo.org/badge/DOI/-.svg)](https://doi.org/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16634186.svg)](https://doi.org/10.5281/zenodo.16634186)
 
 [![WorkflowHub DOI](https://img.shields.io/badge/DOI--blue)](https://doi.org/)
 
@@ -46,8 +46,8 @@
         <tr>
             <td style="text-align: center;">DOI</td>
             <td style="text-align: center;">
-                <a href="https://doi.org/">
-                    <img src="https://zenodo.org/badge/DOI/.svg" alt="DOI" height="18"/>
+                <a href="https://doi.org/10.5281/zenodo.16634186">
+                    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.16634186.svg" alt="DOI" height="18"/>
                 </a>
             </td>
         </tr>
@@ -301,7 +301,7 @@ Keçeci, M. (2025). oresmen [Data set]. figshare. https://doi.org/
 
 Keçeci, M. (2025). oresmen [Data set]. WorkflowHub. https://doi.org/
 
-Keçeci, M. (2025). oresmen. Open Science Articles (OSAs), Zenodo. https://doi.org/
+Keçeci, M. (2025). oresmen (0.1.0). Zenodo. https://doi.org/10.5281/zenodo.16634186
 ```
 
 ### Chicago
@@ -314,7 +314,7 @@ Keçeci, Mehmet (2025). oresmen [Data set]. figshare, 2025. https://doi.org/
 
 Keçeci, Mehmet. oresmen [Data set]. WorkflowHub, 2025. https://doi.org/
 
-Keçeci, Mehmet. oresmen. Open Science Articles (OSAs), Zenodo, 2025. https://doi.org/
+Keçeci, Mehmet. oresmen. Open Science Articles (OSAs), Zenodo, 2025. [https://doi.org/](https://doi.org/10.5281/zenodo.16634186)
 
 ```
 
