@@ -6,7 +6,7 @@
 
 [![figshare DOI](https://img.shields.io/badge/DOI--blue)](https://doi.org/)
 
-[![ResearchGate DOI](https://img.shields.io/badge/DOI--blue)](https://doi.org/)
+[![ResearchGate DOI](https://img.shields.io/badge/DOI-10.13140/RG.2.2.19566.52804-blue)](https://doi.org/10.13140/RG.2.2.19566.52804)
 
 [![Anaconda-Server Badge](https://anaconda.org/bilgi/oresmen/badges/version.svg)](https://anaconda.org/bilgi/oresmen)
 [![Anaconda-Server Badge](https://anaconda.org/bilgi/oresmen/badges/latest_release_date.svg)](https://anaconda.org/bilgi/oresmen)
@@ -295,7 +295,7 @@ If this library was useful to you in your research, please cite us. Following th
 
 ```
 
-Keçeci, M. (2025). oresmen [Data set]. ResearchGate. https://doi.org/
+Keçeci, M. (2025). oresmen [Data set]. ResearchGate. https://doi.org/10.13140/RG.2.2.19566.52804
 
 Keçeci, M. (2025). oresmen [Data set]. figshare. https://doi.org/
 
@@ -308,7 +308,7 @@ Keçeci, M. (2025). oresmen (0.1.0). Zenodo. https://doi.org/10.5281/zenodo.1663
 
 ```
 
-Keçeci, Mehmet. oresmen [Data set]. ResearchGate, 2025. https://doi.org/
+Keçeci, Mehmet. oresmen [Data set]. ResearchGate, 2025. https://doi.org/10.13140/RG.2.2.19566.52804
 
 Keçeci, Mehmet (2025). oresmen [Data set]. figshare, 2025. https://doi.org/
 
