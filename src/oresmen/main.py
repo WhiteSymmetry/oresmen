@@ -299,11 +299,9 @@ def harmonic_sum_approx_numba(n: np.ndarray,
 
 def harmonic_convergence_analysis(n_values: np.ndarray) -> dict:
     """
-    Verilen değerler için harmonik seri yakınsamasını analiz eder.
-    
+    Verilen değerler için harmonik seri yakınsamasını analiz eder.  
     Args:
         n_values: Analiz edilecek n değerleri dizisi.
-    
     Returns:
         Sözlük:
         - exact_sums: Tam harmonik toplamlar
@@ -314,14 +312,12 @@ def harmonic_convergence_analysis(n_values: np.ndarray) -> dict:
     # -1, 0 tabanlı indeksleme için
     exact = harmonic_numbers_numba(n_values[-1])[n_values-1]
     approx = harmonic_sum_approx_numba(n_values.astype(float))
-
     return {
         'exact_sums': exact,
         'approx_sums': approx,
         'errors': np.abs(exact - approx),
         'log_fit': np.polyfit(np.log(n_values), exact, 1)  # a*ln(n) + b
     }
-
 
 # -----------------------------
 # Ana Program
