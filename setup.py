@@ -8,10 +8,7 @@ setup(
     packages=find_packages(where="src"),  # src dizinindeki modülleri bul
     package_dir={"": "src"},  # src dizinine yönlendirme
     include_package_data=True,  # Ek dosyaları dahil et
-    install_requires=[
-    	"numpy",
-        "numba"
-        ],
+    install_requires=["numpy","numba"],
     author="Mehmet Keçeci",
     description="A module for generating Oresme numbers (harmonic series partial sums)",
     url="https://github.com/WhiteSymmetry/oresmen",
