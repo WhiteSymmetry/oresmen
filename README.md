@@ -22,6 +22,7 @@
 [![PyPI version](https://badge.fury.io/py/oresmen.svg)](https://badge.fury.io/py/oresmen)
 [![PyPI Downloads](https://static.pepy.tech/badge/oresmen)](https://pepy.tech/projects/oresmen)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) 
+[![Linted with Ruff](https://img.shields.io/badge/Linted%20with-Ruff-green?logo=python&logoColor=white)](https://github.com/astral-sh/ruff)
 
 ---
 
