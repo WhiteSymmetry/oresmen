@@ -299,7 +299,7 @@ def harmonic_sum_approx_numba(n: np.ndarray,
 
 def harmonic_convergence_analysis(n_values: np.ndarray) -> dict:
     """
-    Verilen değerler için harmonik seri yakınsamasını analiz eder.  
+    Verilen değerler için harmonik seri yakınsamasını analiz eder.
     Args:
         n_values: Analiz edilecek n değerleri dizisi.
     Returns:
