@@ -4,7 +4,7 @@ setup(
     name="oresmen",
     use_scm_version=True,  # Sürüm bilgisini setuptools_scm ile alır
     setup_requires=["setuptools", "wheel", "setuptools_scm"],  # Gerekli kurulum bağımlılıkları
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(where="src"),  # src dizinindeki modülleri bul
     package_dir={"": "src"},  # src dizinine yönlendirme
     include_package_data=True,  # Ek dosyaları dahil et
