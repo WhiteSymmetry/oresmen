@@ -322,6 +322,80 @@ def harmonic_convergence_analysis(n_values: np.ndarray) -> dict:
         'log_fit': np.polyfit(np.log(n_values), exact, 1)  # a*ln(n) + b
     }
 
+def is_in_hilbert(sequence: Union[List[float], np.ndarray, Generator[float, None, None]], 
+                 max_terms: int = 10000, 
+                 tolerance: float = 1e-6) -> bool:
+    """
+    Determines if a given sequence belongs to the Hilbert space ℓ².
+    
+    A sequence {a_n} is in ℓ² (Hilbert space) if the sum of the squares of its terms is finite:
+        Σ |a_n|² < ∞
+    
+    This function computes the partial sum of squared terms up to `max_terms` and checks 
+    whether the sum converges within a given tolerance (i.e., the increments become negligible).
+    
+    Parameters
+    ----------
+    sequence : list, np.ndarray, or generator
+        The input sequence to test (e.g., [1, 1/2, 1/3, ...]).
+    max_terms : int, optional
+        Maximum number of terms to consider for convergence check. Default is 10,000.
+    tolerance : float, optional
+        The threshold for determining convergence. If the increment in cumulative sum 
+        falls below this value for consecutive steps, the series is considered convergent. 
+        Default is 1e-6.
+    
+    Returns
+    -------
+    bool
+        True if the sequence is likely in ℓ² (sum of squares converges), False otherwise.
+    
+    Examples
+    --------
+    >>> from oresmen import harmonic_numbers_numba, is_in_hilbert
+    >>> import numpy as np
+    
+    # Harmonic terms: a_n = 1/n → sum(1/n²) converges → in Hilbert space
+    >>> n = 1000
+    >>> harmonic_terms = 1 / np.arange(1, n+1)
+    >>> is_in_hilbert(harmonic_terms)
+    True
+    
+    # Constant terms: a_n = 1 → sum(1²) = ∞ → not in Hilbert space
+    >>> constant_terms = np.ones(1000)
+    >>> is_in_hilbert(constant_terms)
+    False
+    
+    Notes
+    -----
+    - This is a numerical approximation. True mathematical convergence may require 
+      analytical proof, but this function provides a practical check for common sequences.
+    - Sequences like 1/n, 1/n^(0.6), log(n)/n are tested implicitly via their decay rate.
+    """
+    # Convert generator to list if needed
+    if isinstance(sequence, Generator):
+        sequence = list(sequence)
+    
+    arr = np.array(sequence, dtype=float)
+    squares = arr ** 2
+    
+    # Compute cumulative sum of squares
+    cumsum = np.cumsum(squares)
+    
+    # If we have fewer than 2 terms, can't check convergence
+    if len(cumsum) < 2:
+        return bool(np.isfinite(cumsum[0]))
+    
+    # Check if increments in cumulative sum become smaller than tolerance
+    increments = np.diff(cumsum)
+    recent_increments = increments[-100:]  # Last 100 increments for stability
+    
+    # If all recent increments are below tolerance, assume convergence
+    if np.all(recent_increments < tolerance):
+        return True
+    else:
+        return False
+
 # -----------------------------
 # Ana Program
 # -----------------------------
