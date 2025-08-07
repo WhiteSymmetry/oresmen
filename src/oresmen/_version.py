@@ -1,6 +1,6 @@
 # _version.py
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __license__ = "MIT"
 __description__ = "A module for generating Oresme numbers (harmonic series partial sums)"
 __author__ = "Mehmet Keçeci"
