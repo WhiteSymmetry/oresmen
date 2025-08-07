@@ -16,7 +16,7 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 [![Python CI](https://github.com/WhiteSymmetry/oresmen/actions/workflows/python_ci.yml/badge.svg?branch=main)](https://github.com/WhiteSymmetry/oresmen/actions/workflows/python_ci.yml)
-[![codecov](https://codecov.io/gh/WhiteSymmetry/oresmen/graph/badge.svg?token=)](https://codecov.io/gh/WhiteSymmetry/oresmen)
+[![codecov](https://codecov.io/gh/WhiteSymmetry/oresmen/graph/badge.svg?token=N8TAVZUJ1C)](https://codecov.io/gh/WhiteSymmetry/oresmen)
 [![Documentation Status](https://readthedocs.org/projects/oresmen/badge/?version=latest)](https://oresmen.readthedocs.io/en/latest/)
 [![Binder](https://terrarium.evidencepub.io/badge_logo.svg)](https://terrarium.evidencepub.io/v2/gh/WhiteSymmetry/oresmen/HEAD)
 [![PyPI version](https://badge.fury.io/py/oresmen.svg)](https://badge.fury.io/py/oresmen)
