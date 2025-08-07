@@ -16,6 +16,7 @@ from .main import (
     harmonic_numbers,         # Kesin sonuçlar için yavaş ama hassas Fraction tabanlı hesaplama
     oresme_sequence,          # Orijinal Oresme dizisi fonksiyonu
     harmonic_generator_numba, # Numba destekli üreteç
+    is_in_hilbert,
 
     # Yaklaşım (Approximation) Fonksiyonları
     harmonic_number_approx,      # Yaklaşık değer hesaplayan ana fonksiyon
@@ -35,6 +36,7 @@ __all__ = [
     "harmonic_numbers",
     "oresme_sequence",
     "harmonic_generator_numba",
+    "is_in_hilbert",
 
     # Yaklaşım Fonksiyonları
     "harmonic_number_approx",
