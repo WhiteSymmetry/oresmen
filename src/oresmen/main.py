@@ -327,13 +327,10 @@ def is_in_hilbert(sequence: Union[List[float], np.ndarray, Generator[float, None
                  tolerance: float = 1e-6) -> bool:
     """
     Determines if a given sequence belongs to the Hilbert space ℓ².
-    
     A sequence {a_n} is in ℓ² (Hilbert space) if the sum of the squares of its terms is finite:
         Σ |a_n|² < ∞
-    
-    This function computes the partial sum of squared terms up to `max_terms` and checks 
+    This function computes the partial sum of squared terms up to `max_terms` and checks
     whether the sum converges within a given tolerance (i.e., the increments become negligible).
-    
     Parameters
     ----------
     sequence : list, np.ndarray, or generator
@@ -341,44 +338,38 @@ def is_in_hilbert(sequence: Union[List[float], np.ndarray, Generator[float, None
     max_terms : int, optional
         Maximum number of terms to consider for convergence check. Default is 10,000.
     tolerance : float, optional
-        The threshold for determining convergence. If the increment in cumulative sum 
-        falls below this value for consecutive steps, the series is considered convergent. 
+        The threshold for determining convergence. If the increment in cumulative sum
+        falls below this value for consecutive steps, the series is considered convergent.
         Default is 1e-6.
-    
     Returns
     -------
     bool
         True if the sequence is likely in ℓ² (sum of squares converges), False otherwise.
-    
     Examples
     --------
     >>> from oresmen import harmonic_numbers_numba, is_in_hilbert
     >>> import numpy as np
-    
     # Harmonic terms: a_n = 1/n → sum(1/n²) converges → in Hilbert space
     >>> n = 1000
     >>> harmonic_terms = 1 / np.arange(1, n+1)
     >>> is_in_hilbert(harmonic_terms)
     True
-    
     # Constant terms: a_n = 1 → sum(1²) = ∞ → not in Hilbert space
     >>> constant_terms = np.ones(1000)
     >>> is_in_hilbert(constant_terms)
     False
-    
     Notes
     -----
-    - This is a numerical approximation. True mathematical convergence may require 
+    - This is a numerical approximation. True mathematical convergence may require
       analytical proof, but this function provides a practical check for common sequences.
     - Sequences like 1/n, 1/n^(0.6), log(n)/n are tested implicitly via their decay rate.
     """
     # Convert generator to list if needed
     if isinstance(sequence, Generator):
         sequence = list(sequence)
-    
     arr = np.array(sequence, dtype=float)
     squares = arr ** 2
-    
+
     # Compute cumulative sum of squares
     cumsum = np.cumsum(squares)
     
