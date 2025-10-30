@@ -13,5 +13,5 @@ setup(
     description="A module for generating Oresme numbers (harmonic series partial sums)",
     url="https://github.com/WhiteSymmetry/oresmen",
     license="MIT",
-    python_requires='>=3.9',
+    python_requires='>=3.10',
 )
