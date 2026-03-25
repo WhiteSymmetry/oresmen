@@ -6,7 +6,7 @@ Bu sürüm, hesaplamaları hızlandırmak için Numba kullanır.
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 
 # main.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
 from .main import (
@@ -17,6 +17,9 @@ from .main import (
     oresme_sequence,          # Orijinal Oresme dizisi fonksiyonu
     harmonic_generator_numba, # Numba destekli üreteç
     is_in_hilbert,
+    harmonic_sequence,
+    p_series,
+    geometric_sequence,
 
     # Yaklaşım (Approximation) Fonksiyonları
     harmonic_number_approx,      # Yaklaşık değer hesaplayan ana fonksiyon
@@ -37,6 +40,9 @@ __all__ = [
     "oresme_sequence",
     "harmonic_generator_numba",
     "is_in_hilbert",
+    "harmonic_sequence",
+    "p_series",
+    "geometric_sequence",
 
     # Yaklaşım Fonksiyonları
     "harmonic_number_approx",
