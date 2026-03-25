@@ -1,6 +1,6 @@
 # _version.py
 
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 __license__ = "AGPL3.0 or later"
 __description__ = "A module for generating Oresme numbers (harmonic series partial sums)"
 __author__ = "Mehmet Keçeci"
