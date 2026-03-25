@@ -31,7 +31,7 @@ abstract: >-
   A module for generating Oresme numbers (harmonic series partial sums)
 keywords:
   - oresmen
-license: MIT
+license: AGPL3.0 or later
 commit: 'Revision: 1'
 version: 0.1.3
 date-released: '2025-07-31'
