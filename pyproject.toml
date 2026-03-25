@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "oresmen"
-version = "0.1.4"
+version = "0.1.5"
 description = "A module for generating Oresme numbers (harmonic series partial sums)"
 authors = ["Mehmet Keçeci <mkececi@yaani.com>"]
 license = "AGPL3.0 or later"
