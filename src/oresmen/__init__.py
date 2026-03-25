@@ -6,7 +6,7 @@ Bu sürüm, hesaplamaları hızlandırmak için Numba kullanır.
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 # main.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
 from .main import (
