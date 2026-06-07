@@ -13,7 +13,7 @@
 [![Anaconda-Server Badge](https://anaconda.org/bilgi/oresmen/badges/platforms.svg)](https://anaconda.org/bilgi/oresmen)
 [![Anaconda-Server Badge](https://anaconda.org/bilgi/oresmen/badges/license.svg)](https://anaconda.org/bilgi/oresmen)
 [![Open Source](https://img.shields.io/badge/Open%20Source-Open%20Source-brightgreen.svg)](https://opensource.org/)
-[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: AGPL](https://img.shields.io/badge/License-AGPL-yellow.svg)](https://opensource.org/licenses/AGPL)
 
 [![Python CI](https://github.com/WhiteSymmetry/oresmen/actions/workflows/python_ci.yml/badge.svg?branch=main)](https://github.com/WhiteSymmetry/oresmen/actions/workflows/python_ci.yml)
 [![codecov](https://codecov.io/gh/WhiteSymmetry/oresmen/graph/badge.svg?token=N8TAVZUJ1C)](https://codecov.io/gh/WhiteSymmetry/oresmen)
@@ -53,10 +53,10 @@
             </td>
         </tr>
         <tr>
-            <td style="text-align: center;">License: MIT</td>
+            <td style="text-align: center;">License: AGPL-3.0-or-later</td>
             <td style="text-align: center;">
-                <a href="https://opensource.org/licenses/MIT">
-                    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License" height="18"/>
+                <a href="https://opensource.org/licenses/AGP">
+                    <img src="https://img.shields.io/badge/License-AGPL-yellow.svg" alt="License" height="18"/>
                 </a>
             </td>
         </tr>
@@ -323,5 +323,5 @@ Keçeci, Mehmet. oresmen. Open Science Articles (OSAs), Zenodo, 2025. [https://d
 ### Lisans (Türkçe) / License (English)
 
 ```
-This project is licensed under the MIT License.
+This project is licensed under the AGPL-3.0-or-later License.
 ```
