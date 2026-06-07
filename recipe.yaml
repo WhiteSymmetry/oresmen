@@ -30,6 +30,7 @@ requirements:
   host:
     - python
     - pip
+    - poetry-core
     - setuptools
     - wheel
     - numba
