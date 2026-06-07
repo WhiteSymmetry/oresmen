@@ -1,17 +1,72 @@
+# -*- coding: utf-8 -*-
+import io
+import re
 from setuptools import setup, find_packages
+import sys
+import os
+
+# UTF-8 encoding sorunlarını çöz
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+def get_version():
+    with open('oresmen/__init__.py', 'r', encoding='utf-8') as f:
+        content = f.read()
+    match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", content, re.M)
+    if match:
+        return match.group(1)
+    raise RuntimeError("Unable to find version string.")
+
+def get_install_requires():
+    """Kurulum bağımlılıklarını dinamik olarak belirle"""
+    base_requires = [
+        "numpy",
+        "matplotlib",
+        "numba"
+    ]
 
 setup(
     name="oresmen",
-    use_scm_version=True,  # Sürüm bilgisini setuptools_scm ile alır
-    setup_requires=["setuptools", "wheel", "setuptools_scm"],  # Gerekli kurulum bağımlılıkları
-    version='0.1.5',
-    packages=find_packages(where="src"),  # src dizinindeki modülleri bul
-    package_dir={"": "src"},  # src dizinine yönlendirme
-    include_package_data=True,  # Ek dosyaları dahil et
-    install_requires=["numpy","numba"],
+    version=get_version(),
+    description="resme numbers refer to the sums related to the harmonic series.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author="Mehmet Keçeci",
-    description="A module for generating Oresme numbers (harmonic series partial sums)",
+    maintainer="Mehmet Keçeci",
+    author_email="mkececi@yaani.com",
+    maintainer_email="mkececi@yaani.com",
     url="https://github.com/WhiteSymmetry/oresmen",
-    license="MIT",
-    python_requires='>=3.10',
+    packages=find_packages(),
+    package_data={
+        "oresmen": ["__init__.py", "_version.py", "*.pyi"]
+    },
+    install_requires=get_install_requires(),
+    extras_require={
+        'test': [
+            "pytest",
+            "pytest-cov",
+        ],
+        'dev': [
+            "pytest",
+            "pytest-cov",
+            "twine",
+            "wheel",
+        ]
+    },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "Operating System :: OS Independent",
+        "Intended Audience :: Science/Research",
+        "Topic :: Scientific/Engineering :: Mathematics"
+    ],
+    python_requires='>=3.11',
+    license="AGPL-3.0-or-later",
+    keywords="oresmen",
+    project_urls={
+        "Documentation": "https://github.com/WhiteSymmetry/oresmen",
+        "Source": "https://github.com/WhiteSymmetry/oresmen",
+        "Tracker": "https://github.com/WhiteSymmetry/oresmen/issues",
+    },
 )
