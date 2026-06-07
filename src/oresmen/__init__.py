@@ -1,8 +1,21 @@
 # src/oresmen/__init__.py
 """
-A module for generating Oresme numbers (harmonic series partial sums)
-Oresme sayıları (harmonik seri kısmi toplamları) üretmek için bir modül.
-Bu sürüm, hesaplamaları hızlandırmak için Numba kullanır.
+Oresme, Harmonic Series and Hilbert Space Module
+Oresme, Harmonik Seri ve Hilbert Uzayı Modülü
+
+This module provides:
+- Harmonic number calculations (exact fractions and floating point)
+- Oresme sequence (n / 2^n) generation
+- Hilbert space (ℓ²) membership tests (mathematically sound)
+- Numba-accelerated computations for large‑scale work
+- Sequence analysis and comparison utilities
+
+Bu modül şunları sağlar:
+- Harmonik sayı hesaplamaları (kesirli tam sonuçlar ve kayan noktalı)
+- Oresme dizisi (n / 2^n) üretimi
+- ℓ² (Hilbert uzayı) aidiyet testleri (matematiksel olarak doğru)
+- Büyük ölçekli işlemler için Numba ile hızlandırılmış hesaplamalar
+- Dizi analizi ve karşılaştırma yardımcıları
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
