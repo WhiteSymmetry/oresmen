@@ -1,5 +1,5 @@
 {% set name = "oresmen" %}
-{% set version = "0.1.5" %}
+{% set version = "0.1.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +7,9 @@ package:
 
 source:
   # Proje kök dizininden derleme yapıldığını varsayar.
-  path: ..
+  path: .
   url: 
-  sha256: 
+  blake2b-256: 
 
 build:
   # ÖNEMLİ: noarch: python satırını SİLİYORUZ. Çünkü Cython kodu
@@ -39,7 +39,11 @@ requirements:
     # - numpy # Örnek bağımlılık
 
 about:
-  # ... about bölümünüz aynı kalabilir ...
   home: https://github.com/WhiteSymmetry/oresmen
-  license: MIT
+  license: AGPL-3.0-or-later
   summary: 'A module for generating Oresme numbers (harmonic series partial sums)'
+  description: |
+    Oresme numbers refer to the sums related to the harmonic series.
+  dev_url: https://github.com/WhiteSymmetry/oresmej
+  doc_url: https://github.com/WhiteSymmetry/oresmej
+  doc_source_url: https://github.com/WhiteSymmetry/oresmej/blob/main/README.md
