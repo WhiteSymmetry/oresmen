@@ -1,0 +1,61 @@
+# recipe.yaml
+# recipe-noarch-python.yaml
+schema_version: 1
+
+# this sets up "context variables" (in this case name and version) that
+# can later be used in Jinja expressions
+context:
+  version: 0.1.6
+  name: oresmen
+
+# top level package information (name and version)
+package:
+  name: oresmen
+  version: 0.1.6
+
+# location to get the source from
+#`source` are `url`, `sha256`, `md5`, `patches`, `file_name` and `target_directory`
+source:
+  url: 
+  sha256: 
+
+# build number (should be incremented if a new build is made, but version is not incrementing)
+build:
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+  noarch: python
+
+# the requirements at build and runtime
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+    - wheel
+    - numba
+  run:
+   - python >=3.11  # hypercomplex uyumlu versiyon
+   - numpy  # oresmen numpy kullanıyor
+   - pip
+
+# tests to validate that the package works as expected
+#tests:
+#  requires: []  # veya boş liste
+#  - python:
+#      imports:
+#        - oresmen
+
+# information about the package
+about:
+  homepage: https://github.com/WhiteSymmetry/oresmen/
+  license: GPL-3.0-or-later
+  summary: 'oresmen'
+  description: |
+    oresmen
+  repository: https://github.com/WhiteSymmetry/oresmen/
+  documentation: https://github.com/WhiteSymmetry/oresmen/
+
+# the below is conda-forge specific!
+extra:
+  recipe-maintainers:
+    - bilgi
