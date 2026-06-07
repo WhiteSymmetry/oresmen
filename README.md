@@ -75,6 +75,13 @@ Oresme numbers refer to the sums related to the harmonic series.
 2. **Harmonik sayılar** (\( H_n = 1 + \frac{1}{2} + \cdots + \frac{1}{n} \)).  
 Bu sayılar, analiz ve sayı teorisinde önemli rol oynar.
 
+Bu modül şunları sağlar:
+- Harmonik sayı hesaplamaları (kesirli tam sonuçlar ve kayan noktalı)
+- Oresme dizisi (n / 2^n) üretimi
+- ℓ² (Hilbert uzayı) aidiyet testleri (matematiksel olarak doğru)
+- Büyük ölçekli işlemler için Numba ile hızlandırılmış hesaplamalar
+- Dizi analizi ve karşılaştırma yardımcıları
+
 ---
 
 ### **English Definition:**
@@ -82,6 +89,13 @@ Bu sayılar, analiz ve sayı teorisinde önemli rol oynar.
 1. The **\( \frac{n}{2^n} \) sequence** (Oresme's original work),  
 2. **Harmonic numbers** (\( H_n = 1 + \frac{1}{2} + \cdots + \frac{1}{n} \)).  
 These numbers play a key role in analysis and number theory.
+
+This module provides:
+- Harmonic number calculations (exact fractions and floating point)
+- Oresme sequence (n / 2^n) generation
+- Hilbert space (ℓ²) membership tests (mathematically sound)
+- Numba-accelerated computations for large‑scale work
+- Sequence analysis and comparison utilities
 
 ---
 
