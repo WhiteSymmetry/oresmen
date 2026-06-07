@@ -14,7 +14,7 @@ license = "AGPL-3.0-or-later"
 [dependencies]
 python = ">=3.11"
 pip = ">=25.3"
-jax = ">=0.10.1"
+numba = ">=0.65.1"
 conda-build = ">=25.11.1"
 setuptools = ">=82.0.1"
 wheel = ">=0.45.1"
