@@ -1,0 +1,4 @@
+# requirements-dev.txt
+numpy
+matplotlib
+numba
