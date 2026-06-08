@@ -21,8 +21,8 @@ Bu modül şunları sağlar:
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
 __version__ = "0.1.7"
 
-# main.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
-from .main import (
+# oresmen.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
+from .oresmen import (
     # Temel Hesaplama Fonksiyonları
     harmonic_number,          # Numba ile optimize edilmiş en hızlı tekil float hesaplama
     harmonic_numbers_numba,   # Numba ile optimize edilmiş float dizisi hesaplama
