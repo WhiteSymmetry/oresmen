@@ -1,4 +1,4 @@
-# src/oresmen/__init__.py
+# oresmen/__init__.py
 """
 Oresme, Harmonic Series and Hilbert Space Module
 Oresme, Harmonik Seri ve Hilbert Uzayı Modülü
@@ -19,10 +19,10 @@ Bu modül şunları sağlar:
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
-__version__ = "0.1.7"
+__version__ = "0.1.8"
 
-# main.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
-from .main import (
+# oresmen.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
+from .oresmen import (
     # Temel Hesaplama Fonksiyonları
     harmonic_number,          # Numba ile optimize edilmiş en hızlı tekil float hesaplama
     harmonic_numbers_numba,   # Numba ile optimize edilmiş float dizisi hesaplama
