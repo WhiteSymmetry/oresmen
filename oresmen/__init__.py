@@ -19,7 +19,7 @@ Bu modül şunları sağlar:
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 
 # oresmen.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
 from .oresmen import (
