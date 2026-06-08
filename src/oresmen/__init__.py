@@ -19,7 +19,7 @@ Bu modül şunları sağlar:
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
-__version__ = "0.1.6"
+__version__ = "0.1.7"
 
 # main.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
 from .main import (
@@ -33,6 +33,9 @@ from .main import (
     harmonic_sequence,
     p_series,
     geometric_sequence,
+    plot_comparative_performance,
+    _run_tests,
+    main,
 
     # Yaklaşım (Approximation) Fonksiyonları
     harmonic_number_approx,      # Yaklaşık değer hesaplayan ana fonksiyon
@@ -64,4 +67,8 @@ __all__ = [
     # Yardımcı Sınıflar ve Sabitler
     "ApproximationMethod",
     "EULER_MASCHERONI",
+    #test
+    "plot_comparative_performance",
+    "_run_tests",
+    "main",
 ]
