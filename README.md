@@ -1,4 +1,6 @@
-# Oresme Numba
+# Oresmen (Oresme+Numba)
+
+## Oresmen <img src="https://github.com/WhiteSymmetry/Oresmen/blob/main/docs/oresmen-logo.jpg" alt="Oresmen" align="right" height="140"/>
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16634186.svg)](https://doi.org/10.5281/zenodo.16634186)
 
@@ -280,6 +282,13 @@ importlib.reload(on)
 # 3. Fonksiyonun alternatif isimle var olup olmadığını kontrol
 print("Alternatif fonksiyon isimleri:", [name for name in dir(on) if 'harmonic' in name.lower()])
 ```
+
+```python
+from oresme.oresme import _run_tests, main
+_run_tests()
+main()
+```
+
 ---
 
 ### Development
