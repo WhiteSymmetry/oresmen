@@ -232,11 +232,9 @@ def harmonic_sum_approx_numba(
                     result -= inv_n6 / 252
     return result
 
-
 # -----------------------------
 # ℓ² (Hilbert Space) Membership Test / ℓ² (Hilbert Uzayı) Aidiyet Testi
 # -----------------------------
-
 def is_in_hilbert(
     sequence: Union[List[float], np.ndarray, Generator[float, None, None]],
     max_terms: int = 10000,
@@ -245,17 +243,53 @@ def is_in_hilbert(
     """
     Test whether a sequence belongs to ℓ² (Hilbert space).
     Bir dizinin ℓ² (Hilbert) uzayında olup olmadığını test eder.
+    Determines if a given sequence belongs to the Hilbert space ℓ².
+    A sequence {a_n} is in ℓ² (Hilbert space) if the sum of the squares of its terms is finite:
+        Σ |a_n|² < ∞
+    This function computes the partial sum of squared terms up to `max_terms` and checks
+    whether the sum converges within a given tolerance (i.e., the increments become negligible).
+    Parameters
+    ----------
+    sequence : list, np.ndarray, or generator
+        The input sequence to test (e.g., [1, 1/2, 1/3, ...]).
+    max_terms : int, optional
+        Maximum number of terms to consider for convergence check. Default is 10,000.
+    tolerance : float, optional
+        The threshold for determining convergence. If the increment in cumulative sum
+        falls below this value for consecutive steps, the series is considered convergent.
+        Default is 1e-6.
+    Returns
+    -------
+    bool
+        True if the sequence is likely in ℓ² (sum of squares converges), False otherwise.
+    Examples
+    --------
+    >>> from oresmen import harmonic_numbers_numba, is_in_hilbert
+    >>> import numpy as np
+    # Harmonic terms: a_n = 1/n → sum(1/n²) converges → in Hilbert space
+    >>> n = 1000
+    >>> harmonic_terms = 1 / np.arange(1, n+1)
+    >>> is_in_hilbert(harmonic_terms)
+    True
+    # Constant terms: a_n = 1 → sum(1²) = ∞ → not in Hilbert space
+    >>> constant_terms = np.ones(1000)
+    >>> is_in_hilbert(constant_terms)
+    False
+    Notes
+    -----
+    - This is a numerical approximation. True mathematical convergence may require
+      analytical proof, but this function provides a practical check for common sequences.
+    - Sequences like 1/n, 1/n^(0.6), log(n)/n are tested implicitly via their decay rate.
     """
-    # Convert generator to list / Generator'ı listeye çevir
+
     if isinstance(sequence, Generator):
         sequence = list(sequence)
 
     arr = np.array(sequence, dtype=float)
 
     if arr.size == 0:
-        return True  # empty sequence is trivially in ℓ² / boş dizi önemsiz şekilde ℓ²'dedir
+        return True
 
-    # Check for NaN / inf
     if not np.all(np.isfinite(arr)):
         return False
 
@@ -269,8 +303,8 @@ def is_in_hilbert(
     if not np.isfinite(total_sum):
         return False
 
-    # p-series heuristic for positive terms / Pozitif terimler için p-serisi sezgisi
-    if n_terms > 500 and np.all(test_seq[100:] > 0):
+    # p‑series heuristic – eşik 100
+    if n_terms > 100 and np.all(test_seq[100:] > 0):
         log_terms = np.log(test_seq[100:] + 1e-12)
         log_n = np.log(np.arange(100, n_terms))
         try:
@@ -279,25 +313,25 @@ def is_in_hilbert(
                 return True
             elif 0 < alpha <= 0.5:
                 return False
-            elif alpha > 10:   # üstel sönüm / exponential decay
+            elif alpha > 10:   # üstel sönüm
                 return True
         except Exception:
             pass
 
-    # Tail contribution check / Kuyruk katkısı kontrolü
+    # kuyruk katkısı
     if n_terms > 1000:
         last_contribution = squares[-1000:]
         if np.sum(last_contribution) < tolerance:
             return True
 
-    # Ratio test for exponential decay / Üstel sönüm için oran testi
+    # oran testi (üstel sönüm)
     if n_terms > 100:
         ratios = np.abs(test_seq[1:100] / (test_seq[:99] + 1e-12))
-        avg_ratio = np.mean(ratios)
-        if avg_ratio < 0.95:
+        if np.mean(ratios) < 0.95:
             return True
 
-    return np.isfinite(total_sum)
+    # Hiçbir yakınsama belirtisi yoksa ℓ²'de değildir
+    return False
 
 
 # -----------------------------
