@@ -518,7 +518,7 @@ def plot_comparative_performance(max_n=50000, step=5000, runs=10):
         np_times = []
         for _ in range(runs):
             t0 = time.perf_counter()
-            _ = harmonic_numbers_numpy(n)
+            _ = harmonic_numbers_numba(n)
             np_times.append(time.perf_counter() - t0)
 
         # Approx
@@ -583,13 +583,13 @@ def _run_tests(verbose: bool = True) -> bool:
     check(abs(h5 - 2.283333333333333) < 1e-6, "harmonic_number(5)")
 
     # 4. NumPy harmonic numbers
-    h_arr = harmonic_numbers_numpy(5)
-    check(len(h_arr) == 5, "harmonic_numbers_numpy(5) length")
+    h_arr = harmonic_numbers_numba(5)
+    check(len(h_arr) == 5, "harmonic_numbers_numba(5) length")
     check(abs(h_arr[4] - 2.283333333333333) < 1e-6, "NumPy H5 value")
 
     # 5. Generator
-    gen_vals = list(harmonic_generator(5))
-    check(len(gen_vals) == 5, "harmonic_generator(5) length")
+    gen_vals = list(harmonic_generator_numba(5))
+    check(len(gen_vals) == 5, "harmonic_generator_numba(5) length")
     check(abs(gen_vals[4] - 2.283333333333333) < 1e-6, "Generator H5 value")
 
     # 6. Approximations
@@ -604,8 +604,8 @@ def _run_tests(verbose: bool = True) -> bool:
 
     # 7. Vectorized approx
     n_vals = np.array([10, 100, 1000])
-    approx_vec = harmonic_sum_approx(n_vals)
-    check(len(approx_vec) == 3, "harmonic_sum_approx vector length")
+    approx_vec = harmonic_sum_approx_numba(n_vals)
+    check(len(approx_vec) == 3, "harmonic_sum_approx_numba vector length")
     check(abs(approx_vec[1] - h100_exact) / h100_exact < 1e-4, "Vector approx H100 error")
 
     # 8. Bernoulli numbers
@@ -648,7 +648,7 @@ def _run_tests(verbose: bool = True) -> bool:
     try:
         bench = benchmark_harmonic({
             "python": lambda n: harmonic_number(n),
-            "numpy": lambda n: harmonic_numbers_numpy(n)
+            "numpy": lambda n: harmonic_numbers_numba(n)
         }, n=100, runs=3)
         check("python" in bench, "benchmark_harmonic keys")
     except Exception as e:
