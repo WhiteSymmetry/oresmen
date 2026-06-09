@@ -20,6 +20,8 @@ Bu modül şunları sağlar:
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
 __version__ = "0.1.9"
+__author__ = "Mehmet Keçeci <mkececi@yaani.com>"
+__license__ = "AGPL 3.0-or-later"
 
 # oresmen.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
 from .oresmen import (
