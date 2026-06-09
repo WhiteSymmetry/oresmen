@@ -49,7 +49,7 @@ requirements:
 # information about the package
 about:
   homepage: https://github.com/WhiteSymmetry/oresmen/
-  license: GPL-3.0-or-later
+  license: AGPL-3.0-or-later
   summary: 'oresmen'
   description: |
     oresmen
