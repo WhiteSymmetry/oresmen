@@ -43,6 +43,7 @@ from .oresmen import (
     # Yaklaşım (Approximation) Fonksiyonları
     harmonic_number_approx,      # Yaklaşık değer hesaplayan ana fonksiyon
     harmonic_sum_approx_numba,   # Numba ile optimize edilmiş yaklaşık değer hesaplama
+    harmonic_number_numba,
 
     # Kullanıcıların ihtiyaç duyacağı yardımcılar
     ApproximationMethod,      # Yaklaşım metodunu seçmek için gereken Enum sınıfı
@@ -66,6 +67,7 @@ __all__ = [
     # Yaklaşım Fonksiyonları
     "harmonic_number_approx",
     "harmonic_sum_approx_numba",
+    "harmonic_number_numba",
 
     # Yardımcı Sınıflar ve Sabitler
     "ApproximationMethod",
