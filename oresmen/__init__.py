@@ -19,7 +19,7 @@ Bu modül şunları sağlar:
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
-__version__ = "0.1.9"
+__version__ = "0.2.0"
 __author__ = "Mehmet Keçeci <mkececi@yaani.com>"
 __license__ = "AGPL-3.0-or-later"
 
@@ -38,6 +38,7 @@ from .oresmen import (
     plot_comparative_performance,
     _run_tests,
     main,
+    benchmark_harmonic,
 
     # Yaklaşım (Approximation) Fonksiyonları
     harmonic_number_approx,      # Yaklaşık değer hesaplayan ana fonksiyon
@@ -73,4 +74,5 @@ __all__ = [
     "plot_comparative_performance",
     "_run_tests",
     "main",
+    "benchmark_harmonic",
 ]
