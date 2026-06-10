@@ -39,6 +39,7 @@ from .oresmen import (
     _run_tests,
     main,
     benchmark_harmonic,
+    compare_benchmarks,
 
     # Yaklaşım (Approximation) Fonksiyonları
     harmonic_number_approx,      # Yaklaşık değer hesaplayan ana fonksiyon
@@ -77,4 +78,5 @@ __all__ = [
     "_run_tests",
     "main",
     "benchmark_harmonic",
+    "compare_benchmarks",
 ]
