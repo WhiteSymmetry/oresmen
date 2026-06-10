@@ -348,3 +348,65 @@ Keçeci, Mehmet. oresmen. Open Science Articles (OSAs), Zenodo, 2025. [https://d
 ```
 This project is licensed under the AGPL-3.0-or-later License.
 ```
+
+### Pixi:
+
+[![Pixi](https://img.shields.io/badge/Pixi-Pixi-brightgreen.svg)](https://prefix.dev/channels/bilgi)
+
+pixi init oresmen
+
+cd oresmen
+
+pixi workspace channel add [https://prefix.dev/channels/bilgi](https://prefix.dev/channels/bilgi) --prepend
+
+✔ Added https://prefix.dev/channels/bilgi
+
+pixi add oresmen
+
+✔ Added oresmen >=...,<1
+
+pixi install
+
+pixi shell
+
+pixi run python -c "import oresmen; print(oresmen.__version__)"
+
+### Çıktı: 
+
+pixi remove oresmen
+
+conda install -c https://prefix.dev/channels/bilgi oresmen
+
+pixi run python -c "import oresmen; print(oresmen.__version__)"
+
+### Çıktı: 
+
+pixi run pip list | grep oresmen
+
+### oresmen  
+
+pixi run pip show oresmen
+
+Name: oresmen
+
+Version: 
+
+Summary: 
+
+Home-page: https://github.com/WhiteSymmetry/oresmen
+
+Author: Mehmet Keçeci
+
+Author-email: Mehmet Keçeci <...>
+
+License: GNU AFFERO GENERAL PUBLIC LICENSE
+
+Copyright (c) 2025-2026 Mehmet Keçeci
+
+----
+
+1. https://pypi.org/project/oresmen/
+2. https://anaconda.org/bilgi/oresmen
+3. https://prefix.dev/channels/bilgi/packages/oresmen
+
+---
