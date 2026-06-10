@@ -1,4 +1,7 @@
 # requirements-dev.txt
 numpy
 matplotlib
+oresme
 numba
+oresmej
+jax
