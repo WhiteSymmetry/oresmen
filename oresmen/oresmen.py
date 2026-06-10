@@ -32,6 +32,8 @@ from enum import Enum, auto
 from functools import lru_cache
 from fractions import Fraction
 from typing import List, Union, Generator, Tuple, Optional
+import oresme
+import oresmej
 
 import numba
 import numpy as np
@@ -550,12 +552,14 @@ def compare_benchmarks(n: int = 100_000, runs: int = 5):
     Her modülün kendi içindeki en hızlı yöntemleri sözlük ile benchmark_harmonic'e gönderir.
     """
     # JAX'ı CPU moduna zorla (adil karşılaştırma)
+    import oresmej
     oresmej.enable_gpu(False)
 
     print(f"Karşılaştırmalı Performans Testi (n={n:,}, runs={runs})")
     print("=" * 70)
 
     # --- oresme (Pure) ---
+    import oresme
     start = time.perf_counter()
     bench_pure = oresme.benchmark_harmonic({
         "pure_python": lambda n: oresme.harmonic_number(n),
@@ -565,6 +569,7 @@ def compare_benchmarks(n: int = 100_000, runs: int = 5):
     elapsed_pure = time.perf_counter() - start
 
     # --- oresmen (Numba) ---
+    import oresmen
     start = time.perf_counter()
     bench_numba = oresmen.benchmark_harmonic({
         "python_jit":     lambda n: oresmen.harmonic_number(n),
@@ -600,8 +605,8 @@ def compare_benchmarks(n: int = 100_000, runs: int = 5):
         print(f"{mod:<10} {method:<25} {ms:10.4f} {rps:12.2f}")
 
     print("-" * 70)
-    print(f"Toplam test süreleri: oresme={elapsed_pure:.3f}s, "
-          f"oresmen={elapsed_numba:.3f}s, oresmej={elapsed_jax:.3f}s")
+    print(f"Toplam test süreleri: oresme={elapsed_pure:.4f}s, "
+          f"oresmen={elapsed_numba:.4f}s, oresmej={elapsed_jax:.4f}s")
 
     # En hızlı yöntemi bul
     fastest = min(all_results.items(), key=lambda x: x[1])
