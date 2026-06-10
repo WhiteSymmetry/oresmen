@@ -544,6 +544,70 @@ def plot_comparative_performance(max_n=50000, step=5000, runs=10):
     plt.tight_layout()
     plt.show()
 
+def compare_benchmarks(n: int = 100_000, runs: int = 5):
+    """
+    Performans karşılaştırması: oresme (pure), oresmen (Numba), oresmej (JAX)
+    Her modülün kendi içindeki en hızlı yöntemleri sözlük ile benchmark_harmonic'e gönderir.
+    """
+    # JAX'ı CPU moduna zorla (adil karşılaştırma)
+    oresmej.enable_gpu(False)
+
+    print(f"Karşılaştırmalı Performans Testi (n={n:,}, runs={runs})")
+    print("=" * 70)
+
+    # --- oresme (Pure) ---
+    start = time.perf_counter()
+    bench_pure = oresme.benchmark_harmonic({
+        "pure_python": lambda n: oresme.harmonic_number(n),
+        "numpy":       lambda n: oresme.harmonic_numbers_numpy(n),
+        "approx":      lambda n: oresme.harmonic_number_approx(n)
+    }, n, runs)
+    elapsed_pure = time.perf_counter() - start
+
+    # --- oresmen (Numba) ---
+    start = time.perf_counter()
+    bench_numba = oresmen.benchmark_harmonic({
+        "python_jit":     lambda n: oresmen.harmonic_number(n),
+        "numba_vectorized": lambda n: oresmen.harmonic_number_numba(n),
+        "approx":         lambda n: oresmen.harmonic_number_approx(n)
+    }, n, runs)
+    elapsed_numba = time.perf_counter() - start
+
+    # --- oresmej (JAX) ---
+    start = time.perf_counter()
+    bench_jax = oresmej.benchmark_harmonic({
+        "pure_python": lambda n: oresmej.harmonic_number(n),
+        "jax":         lambda n: oresmej.harmonic_number_jax(n).block_until_ready(),
+        "approx":      lambda n: oresmej.harmonic_number_approx(n)
+    }, n, runs)
+    elapsed_jax = time.perf_counter() - start
+
+    # Sonuçları birleştir ve tablo yap
+    all_results = {}
+    for method, t in bench_pure.items():
+        all_results[("oresme", method)] = t
+    for method, t in bench_numba.items():
+        all_results[("oresmen", method)] = t
+    for method, t in bench_jax.items():
+        all_results[("oresmej", method)] = t
+
+    # Tablo yazdır
+    print(f"{'Modül':<10} {'Yöntem':<25} {'Süre (ms)':>10} {'Hız (runs/s)':>12}")
+    print("-" * 70)
+    for (mod, method), t in sorted(all_results.items()):
+        ms = t * 1000
+        rps = 1.0 / t if t > 0 else float('inf')
+        print(f"{mod:<10} {method:<25} {ms:10.4f} {rps:12.2f}")
+
+    print("-" * 70)
+    print(f"Toplam test süreleri: oresme={elapsed_pure:.3f}s, "
+          f"oresmen={elapsed_numba:.3f}s, oresmej={elapsed_jax:.3f}s")
+
+    # En hızlı yöntemi bul
+    fastest = min(all_results.items(), key=lambda x: x[1])
+    print(f"\nEn hızlı yöntem: {fastest[0][0]} -> {fastest[0][1]} "
+          f"({fastest[1]*1000:.4f} ms)")
+
 def _run_tests(verbose: bool = True) -> bool:
     """
     Dahili test fonksiyonu. Tüm alt fonksiyonları çağırarak temel doğrulamaları yapar.
