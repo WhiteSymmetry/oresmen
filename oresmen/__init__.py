@@ -19,7 +19,7 @@ Bu modül şunları sağlar:
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 __author__ = "Mehmet Keçeci <mkececi@yaani.com>"
 __license__ = "AGPL-3.0-or-later"
 
