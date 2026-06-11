@@ -31,7 +31,7 @@ import logging
 from enum import Enum, auto
 from functools import lru_cache
 from fractions import Fraction
-from typing import List, Union, Generator, Tuple, Optional
+from typing import Any, Dict, List, Union, Generator, Tuple, Optional
 import oresme
 import oresmej
 
