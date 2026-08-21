@@ -2,7 +2,7 @@
 name = "oresmen"
 version = "0.2.2"
 description = "A module for generating Oresme numbers (harmonic series partial sums)"
-authors = ["Mehmet Keçeci <mkececi@yaani.com>"]
+authors = ["Mehmet Keçeci <enfo@tuta.io>"]
 license = "AGPL-3.0-or-later"
 readme = "README.md"
 
@@ -15,5 +15,5 @@ setuptools = ">=82.0.1"
 cython = ">3.2.5"
 
 [build-system]
-requires = ["poetry-core", "cython", "setuptools>=82.0.1"]
+requires = ["poetry-core", "cython", "setuptools>=84.0.0"]
 build-backend = "poetry.core.masonry.api"
