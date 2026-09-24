@@ -44,6 +44,6 @@ about:
   summary: 'A module for generating Oresme numbers (harmonic series partial sums)'
   description: |
     Oresme numbers refer to the sums related to the harmonic series.
-  dev_url: https://github.com/WhiteSymmetry/oresmej
-  doc_url: https://github.com/WhiteSymmetry/oresmej
-  doc_source_url: https://github.com/WhiteSymmetry/oresmej/blob/main/README.md
+  dev_url: https://github.com/WhiteSymmetry/oresmen
+  doc_url: https://github.com/WhiteSymmetry/oresmen
+  doc_source_url: https://github.com/WhiteSymmetry/oresmen/blob/main/README.md
