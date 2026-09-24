@@ -19,8 +19,8 @@ Bu modül şunları sağlar:
 """
 
 # Projenizin versiyon numarasını belirtmek iyi bir pratiktir.
-__version__ = "0.2.2"
-__author__ = "Mehmet Keçeci <mkececi@yaani.com>"
+__version__ = "0.2.3"
+__author__ = "Mehmet Keçeci <enfo@tuta.io>"
 __license__ = "AGPL-3.0-or-later"
 
 # oresmen.py dosyasındaki ana sınıfları ve fonksiyonları buraya import et
