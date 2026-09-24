@@ -2,7 +2,7 @@
 preview = ["pixi-build"]
 authors = ["Mehmet Keçeci <enfo@tuta.io>"]
 channels = ["pypi", "https://prefix.dev/conda-forge", "https://conda.modular.com/max-nightly", "conda-forge", "https://repo.prefix.dev/modular-community"]
-platforms = ["linux-64"]
+platforms = ["linux-64", "win-64", "osx-64", "osx-arm64"]
 name = "oresmen"
 version = "0.2.3"
 
@@ -21,6 +21,7 @@ wheel = ">=0.45.1"
 setuptools_scm = ">=9.2.2"
 rattler-build = ">=0.55.0"
 pytest = "*"
+hatchling = ">=1.29.0"
 
 [tasks]
 build = "python -m build"
@@ -37,4 +38,7 @@ name = "pixi-build-python"
 version = "*"
 
 [package.host-dependencies]
-hatchling = "*"
+python = ">=3.11"
+setuptools = ">=84.0.0"
+cython = ">=3.0"
+pip = "*"
