@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -111,24 +111,30 @@ jobs:
           with open(meta_file, 'r', encoding='utf-8') as f:
               content = f.read()
           
+          # url için (package: altında 2 boşluk girintili)
           content = re.sub(
-              r'(url:\s*)(["\']?)(.*?)\2',
-              f'url: "{pypi_url}"',
+              r'^(\s*)url:\s*["\']?[^"\'\n]*["\']?\s*$',
+              f'  url: "{pypi_url}"',
               content,
+              flags=re.MULTILINE,
               count=1
           )
           
+          # blake2b-256 için
           content = re.sub(
-              r'(blake2b-256:\s*)(["\']?)(.*?)\2',
-              f'blake2b-256: "{pypi_hash}"',
+              r'^(\s*)blake2b-256:\s*["\']?[^"\'\n]*["\']?\s*$',
+              f'  blake2b-256: "{pypi_hash}"',
               content,
+              flags=re.MULTILINE,
               count=1
           )
           
+          # version için
           content = re.sub(
-              r'(version:\s*)(["\']?)(.*?)\2',
-              f'version: "{pkg_version}"',
+              r'^(\s*)version:\s*["\']?[^"\'\n]*["\']?\s*$',
+              f'  version: "{pkg_version}"',
               content,
+              flags=re.MULTILINE,
               count=1
           )
           
@@ -210,9 +216,8 @@ jobs:
       # ================================================================
       - name: Create test environment
         run: |
-          echo "🧪 Test ortamı oluşturuluyor (temel paketler)..."
+          echo "🧪 Test ortamı oluşturuluyor (jax dahil)..."
           
-          # Sadece temel bilimsel paketleri kur
           conda create -n test-env -y \
             python=${{ matrix.python-version }} \
             numpy \
@@ -220,18 +225,38 @@ jobs:
             pytest \
             pytest-cov \
             jax \
+            jaxlib \
             oresme \
-            oresmen \
+            oresmej \
+            numba \
             -c conda-forge -c bilgi
           
-          # kececinumbers ekle
-          #conda install -n test-env -y kececinumbers -c bilgi
-          
           echo ""
-          echo "✅ Temel paketler kuruldu"
-          
+          echo "✅ Tüm paketler kuruldu"
+      
       # ================================================================
-      # ADIM 9: Paket Import Testi
+      # ADIM 7: Build Edilen Paketi Test Ortamına Kur
+      # ================================================================
+      - name: Install built package in test environment
+        run: |
+          echo "📦 Build edilen paketi test ortamına kuruyoruz..."
+          
+          PACKAGE_FILE=$(find dist -name "*.conda" -type f | head -n1)
+          
+          if [ -z "$PACKAGE_FILE" ]; then
+            echo "❌ HATA: Build edilen paket bulunamadı!"
+            ls -R dist/ || echo "dist/ dizini yok veya boş"
+            exit 1
+          fi
+          
+          echo "✅ Kurulacak paket: $PACKAGE_FILE"
+          
+          conda install -n test-env -y "$PACKAGE_FILE" -c ./dist -c conda-forge -c bilgi
+          
+          echo "✅ Paket kuruldu"
+      
+      # ================================================================
+      # ADIM 8: Paket Import Testi
       # ================================================================
       - name: Verify package import
         run: |
@@ -243,7 +268,24 @@ jobs:
           print('✅ Tüm bağımlılıklar başarıyla yüklendi!')
           print(f'📦 oresmen version: {oresmen.__version__}')
           "
-
+      
+      # ================================================================
+      # ADIM 9: Debug (Başarısızlık Durumu)
+      # ================================================================
+      - name: Debug - Environment info
+        if: failure()
+        run: |
+          echo "=========================================="
+          echo "🔍 Hata Ayıklama Bilgileri"
+          echo "=========================================="
+          conda info
+          echo ""
+          echo "Test ortamı paketleri:"
+          conda list -n test-env || echo "test-env yok"
+          echo ""
+          echo "Ortam detayları:"
+          conda env export -n test-env || echo "test-env export başarısız"
+  
       # ================================================================
       # ADIM 10: Debug (Başarısızlık Durumu)
       # ================================================================
