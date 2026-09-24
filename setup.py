@@ -21,7 +21,7 @@ def get_version():
 
 def get_install_requires():
     """Kurulum bağımlılıklarını dinamik olarak belirle"""
-    base_requires = [
+    return [
         "numpy",
         "matplotlib",
         "numba"
