@@ -219,10 +219,13 @@ jobs:
             cython \
             pytest \
             pytest-cov \
+            jax \
+            oresme \
+            oresmen \
             -c conda-forge -c bilgi
           
           # kececinumbers ekle
-          conda install -n test-env -y kececinumbers -c bilgi
+          #conda install -n test-env -y kececinumbers -c bilgi
           
           echo ""
           echo "✅ Temel paketler kuruldu"
