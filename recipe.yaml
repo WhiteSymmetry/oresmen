@@ -16,6 +16,7 @@ package:
 # location to get the source from
 #`source` are `url`, `sha256`, `md5`, `patches`, `file_name` and `target_directory`
 source:
+  path: .
   url: 
   sha256: 
 
