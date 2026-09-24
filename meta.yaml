@@ -8,7 +8,7 @@ package:
 source:
   # Proje kök dizininden derleme yapıldığını varsayar.
   path: .
-  url: 
+  url: https://pypi.org{{ name }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   blake2b-256: 
 
 build:
