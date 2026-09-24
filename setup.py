@@ -24,7 +24,8 @@ def get_install_requires():
     return [
         "numpy",
         "matplotlib",
-        "numba"
+        "numba",
+        "oresme",
     ]
 
 setup(
