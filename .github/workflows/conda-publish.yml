@@ -27,7 +27,7 @@ jobs:
             echo "📌 Manuel sürüm kullanılıyor: $PKG_VERSION"
           else
             echo "🔍 PyPI'den son sürüm bilgisi çekiliyor..."
-            PYPI_JSON=$(curl -s https://pypi.org/pypi/grikod3/json)
+            PYPI_JSON=$(curl -s https://pypi.org/pypi/oresmen/json)
             
             PKG_VERSION=$(echo "$PYPI_JSON" | python3 -c "
           import sys, json
@@ -48,7 +48,7 @@ jobs:
         run: |
           echo "📦 PyPI source bilgileri çekiliyor (sürüm: $PKG_VERSION)..."
           
-          PYPI_JSON=$(curl -s "https://pypi.org/pypi/grikod3/$PKG_VERSION/json")
+          PYPI_JSON=$(curl -s "https://pypi.org/pypi/oresmen/$PKG_VERSION/json")
           
           SOURCE_INFO=$(echo "$PYPI_JSON" | python3 -c "
       import sys, json
@@ -168,7 +168,7 @@ jobs:
       - name: Clean environment before build
         run: |
           echo "🧹 Derleme öncesi temizlik yapılıyor..."
-          rm -rf build/ dist/ *.egg-info grikod3.egg-info
+          rm -rf build/ dist/ *.egg-info oresmen.egg-info
           find . -type d -name "__pycache__" -exec rm -rf {} + || true
           find . -name "*.pyc" -delete || true
           conda clean --all --yes
@@ -228,10 +228,10 @@ jobs:
           echo "🔍 Paket import testi yapılıyor..."
           
           conda run -n test-env python -c "
-          import grikod3
+          import oresmen
           
           print('✅ Tüm bağımlılıklar başarıyla yüklendi!')
-          print(f'📦 grikod3 version: {grikod3.__version__}')
+          print(f'📦 oresmen version: {oresmen.__version__}')
           "
 
       # ================================================================
@@ -327,7 +327,7 @@ jobs:
             echo ""
             echo "=========================================="
             echo "🎉 TÜM PAKETLER ANACONDA CLOUD'A YÜKLENDİ"
-            echo "🔗 Kontrol: https://anaconda.org/bilgi/grikod3"
+            echo "🔗 Kontrol: https://anaconda.org/bilgi/oresmen"
             echo "=========================================="
           else
             echo ""
