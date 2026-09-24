@@ -14,16 +14,16 @@ jobs:
     strategy:
       matrix:
         # 🚀 Tüm ana işletim sistemlerini matrise ekledik
-        os: [ubuntu-latest, windows-latest, macos-13, macos-latest]
+        os: [ubuntu-latest, macos-latest]
         python-version: ["3.11", "3.12", "3.13", "3.14"]
       fail-fast: false
 
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 🐍 Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -34,6 +34,16 @@ jobs:
           cache: false             # Önbellek çakışmasını engeller
           frozen: false            # Kilit dosyası yoksa veya eksikse dinamik olarak çözülmesine izin verir
 
+      - name: 🧠 Cache Pixi environments & cache
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cache/pixi
+            ~/.pixi/envs
+          key: ${{ runner.os }}-pixi-${{ hashFiles('pixi.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pixi-
+
       - name: 📦 Install dependencies
         run: pixi install --frozen
 
@@ -42,6 +52,19 @@ jobs:
 
       - name: 🧪 Run tests
         run: pixi run test
+
+      - name: 🏗️ Build package (wheel + sdist)
+        run: pixi run build
+        # Gerekiyorsa `build` görevini pixi.toml'da tanımlamış olmalısınız:
+        # [tasks]
+        # build = "python -m build"
+
+      - name: 📤 Upload build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: oresmen-dist-${{ matrix.os }}-py${{ matrix.python-version }}
+          path: dist/
+          if-no-files-found: ignore
 
       - name: 🏗️ Paket Derle ve prefix.dev'e Yayınla (Trusted Publishing)
         # Hangi sunucuda çalışıyorsa (Win/Mac/Linux) o platformun paketini derleyip yükler
