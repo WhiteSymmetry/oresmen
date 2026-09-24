@@ -367,5 +367,5 @@ jobs:
           echo "🐍 Python: ${{ matrix.python-version }}"
           echo "🔗 PyPI URL: $PYPI_URL"
           echo "🔒 BLAKE2b-256: $PYPI_HASH"
-          echo "📤 Anaconda: https://anaconda.org/bilgi/grikod3"
+          echo "📤 Anaconda: https://anaconda.org/bilgi/oresmen"
           echo "=========================================="
