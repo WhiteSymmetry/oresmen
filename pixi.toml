@@ -2,13 +2,13 @@
 preview = ["pixi-build"]
 authors = ["Mehmet Keçeci <enfo@tuta.io>"]
 channels = ["pypi", "https://prefix.dev/conda-forge", "https://conda.modular.com/max-nightly", "conda-forge", "https://repo.prefix.dev/modular-community"]
-platforms = ["linux-64"]
+platforms = ["linux-64", "win-64", "osx-64"]
 name = "oresmen"
-version = "0.2.2"
+version = "0.2.3"
 
 [package]
 name = "oresmen"
-version = "0.2.2"
+version = "0.2.3"
 license = "AGPL-3.0-or-later"
 
 [dependencies]
@@ -18,11 +18,8 @@ numba = ">=0.65.1"
 conda-build = ">=25.11.1"
 setuptools = ">=82.0.1"
 wheel = ">=0.45.1"
-hatchling = ">=1.28.0"
 setuptools_scm = ">=9.2.2"
 rattler-build = ">=0.55.0"
-quetz = ">=0.10.4"
-sqlalchemy = ">=2.0.45"
 
 [tasks]
 build = "python -m build"
@@ -33,7 +30,6 @@ serve = { cmd = "python -m http.server", cwd = "docs" }
 install-oresmen = "pip install git+https://github.com/WhiteSymmetry/oresmen"
 install = "pip install -e ."
 test = { depends-on = ["install"], cmd = "pytest" }
-install-deps = "pip install oresmen"
 
 [package.build.backend]
 name = "pixi-build-python"
