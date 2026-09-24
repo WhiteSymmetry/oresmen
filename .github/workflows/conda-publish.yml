@@ -2,6 +2,13 @@ name: Conda-Build, Test, and Publish Package
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version (leave empty for latest from PyPI)'
+        required: false
+        type: string
+  release:
+    types: [published]
 
 jobs:
   build-publish:
