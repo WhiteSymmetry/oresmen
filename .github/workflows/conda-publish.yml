@@ -58,19 +58,19 @@ jobs:
           PYPI_JSON=$(curl -s "https://pypi.org/pypi/oresmen/$PKG_VERSION/json")
           
           SOURCE_INFO=$(echo "$PYPI_JSON" | python3 -c "
-      import sys, json
-      data = json.load(sys.stdin)
-      
-      # Sadece sdist (packagetype 'sdist') bul
-      for url_info in data['urls']:
-          if url_info['packagetype'] == 'sdist':
-              print(f\"URL={url_info['url']}\")
-              print(f\"HASH={url_info['digests']['blake2b_256']}\")
-              break
-      else:
-          print(\"ERROR: sdist not found\")
-          sys.exit(1)
-      ")
+          import sys, json
+          data = json.load(sys.stdin)
+          
+          # Sadece sdist (packagetype 'sdist') bul
+          for url_info in data['urls']:
+              if url_info['packagetype'] == 'sdist':
+                  print(f\"URL={url_info['url']}\")
+                  print(f\"HASH={url_info['digests']['blake2b_256']}\")
+                  break
+          else:
+              print(\"ERROR: sdist not found\")
+              sys.exit(1)
+          ")
           
           if echo "$SOURCE_INFO" | grep -q "^ERROR"; then
             echo "❌ HATA: PyPI'de sdist bulunamadı!"
