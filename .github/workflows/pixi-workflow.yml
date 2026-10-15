@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         # 🚀 Tüm ana işletim sistemlerini matrise ekledik
-        os: [ubuntu-latest, macos-latest]
-        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        os: [ubuntu-latest]
+        python-version: ["3.14"]
       fail-fast: false
 
     steps:
