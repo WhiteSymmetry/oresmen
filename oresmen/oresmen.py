@@ -283,7 +283,6 @@ def is_in_hilbert(
       analytical proof, but this function provides a practical check for common sequences.
     - Sequences like 1/n, 1/n^(0.6), log(n)/n are tested implicitly via their decay rate.
     """
-
     if isinstance(sequence, Generator):
         sequence = list(sequence)
 
@@ -302,39 +301,51 @@ def is_in_hilbert(
     cumsum = np.cumsum(squares)
     total_sum = cumsum[-1]
 
-    if not np.isfinite(total_sum):
+    if not np.all(np.isfinite(total_sum)):
         return False
 
-    # p‑series heuristic – eşik 100
+    # 1. ORAN TESTİ (Üstel sönüm - Oresme gibi diziler için en başa taşındı)
+    if n_terms > 100:
+        # 1e-12 yerine daha kararlı sıfır denetimi
+        ratios = np.abs(test_seq[1:100] / (test_seq[:99] + 1e-15))
+        mean_ratio = np.mean(ratios)
+        if mean_ratio < 0.95 or np.isnan(mean_ratio):
+            return True
+
+    # 2. p‑SERİSİ HEURISTIC (Mantık hatası düzeltildi)
     if n_terms > 100 and np.all(test_seq[100:] > 0):
-        log_terms = np.log(test_seq[100:] + 1e-12)
+        log_terms = np.log(test_seq[100:] + 1e-15)
         log_n = np.log(np.arange(100, n_terms))
         try:
             alpha = -np.polyfit(log_n, log_terms, 1)[0]
+            # Ölü kod kaldırıldı, kararlı koşullar eklendi
             if alpha > 0.5:
                 return True
             elif 0 < alpha <= 0.5:
                 return False
-            elif alpha > 10:   # üstel sönüm
-                return True
         except Exception:
             pass
 
-    # kuyruk katkısı
+    # 3. KUYRUK KATKISI (Son 1000 terimin toplam enerjisi)
     if n_terms > 1000:
         last_contribution = squares[-1000:]
         if np.sum(last_contribution) < tolerance:
             return True
 
-    # oran testi (üstel sönüm)
-    if n_terms > 100:
-        ratios = np.abs(test_seq[1:100] / (test_seq[:99] + 1e-12))
-        if np.mean(ratios) < 0.95:
-            return True
-
-    # Hiçbir yakınsama belirtisi yoksa ℓ²'de değildir
     return False
 
+# -------------------------------------------------------------
+# Güvenli Veri Hazırlama & Çalıştırma (Overflow Warning Engellendi)
+# -------------------------------------------------------------
+n = 10000
+indeksler = np.arange(1, n + 1)
+
+# Oresme Dizisi Üretimi (Safe Log-Space Conversion to prevent float64 overflow)
+# n / 2^n = exp(log(n) - n * log(2))
+oresme_guvenli = np.exp(np.log(indeksler) - indeksler * np.log(2.0))
+
+print("=== GÜNCELLEME SONRASI TEST DURUMU ===")
+print("Oresme (Güvenli) Hilbert'te mi? :", is_in_hilbert(oresme_guvenli))
 
 # -----------------------------
 # Utility Functions / Yardımcı Fonksiyonlar
